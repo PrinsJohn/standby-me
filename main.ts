@@ -2956,7 +2956,6 @@ function LampeQuiz () {
     game.showLongText("Hvor mange % af dit standby forbrug udgør en smart pære?", DialogLayout.Center)
 }
 function Lejlighed () {
-    music.play(music.createSong(assets.song`Axel f`), music.PlaybackMode.LoopingInBackground)
     tiles.setCurrentTilemap(tilemap`level3`)
     SengDetector = sprites.create(img`
         .1111.........11111............d
