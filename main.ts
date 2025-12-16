@@ -8,6 +8,7 @@ namespace SpriteKind {
     export const AnswerWrong = SpriteKind.create()
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    music.setVolume(190)
     animation.runImageAnimation(
     Hero,
     [img`
@@ -1625,6 +1626,7 @@ function ExitNotYetText () {
     game.showLongText(ExitNotYet, DialogLayout.Full)
 }
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
+    music.setVolume(0)
     animation.stopAnimation(animation.AnimationTypes.All, Hero)
     Hero.setImage(img`
         . . . . . . f f f f . . . . . . 
@@ -1737,6 +1739,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.ScaleRedux, function (sprite, ot
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    music.setVolume(190)
     animation.runImageAnimation(
     Hero,
     [img`
@@ -1893,6 +1896,7 @@ function JulelysQuiz () {
     QstatusJuleLys = 1
 }
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    music.setVolume(0)
     animation.stopAnimation(animation.AnimationTypes.All, Hero)
     Hero.setImage(img`
         . . . . . . f f f f f f . . . . 
@@ -1978,6 +1982,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Minigame, function (sprite, othe
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
+    music.setVolume(0)
     animation.stopAnimation(animation.AnimationTypes.All, Hero)
     Hero.setImage(img`
         . . . . f f f f f f . . . . . . 
@@ -2190,6 +2195,7 @@ function MicroOvnQuiz () {
     game.showLongText("Hvor mange % af dit standby forbrug udgør en mikrobølgeovn?", DialogLayout.Center)
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    music.setVolume(190)
     animation.runImageAnimation(
     Hero,
     [img`
@@ -2321,6 +2327,7 @@ function PcWin () {
     CheckQstatus()
 }
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
+    music.setVolume(0)
     animation.stopAnimation(animation.AnimationTypes.All, Hero)
     Hero.setImage(img`
         . . . . . . f f f f . . . . . . 
@@ -2342,6 +2349,7 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
         `)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    music.setVolume(190)
     animation.runImageAnimation(
     Hero,
     [img`
@@ -4066,7 +4074,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.AnswerWrong, function (sprite, o
     }
 })
 function PcQuiz () {
-    LastLocation = Hero.tilemapLocation().getNeighboringLocation(CollisionDirection.Left)
+    LastLocation = Hero.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom)
     PcRunning = 1
     QuizGeneral()
     PcAns1 = sprites.create(img`
@@ -4249,3 +4257,8 @@ Intro()
 QuizStatus()
 Lejlighed()
 SpriteForground()
+music.setVolume(0)
+forever(function () {
+    music.play(music.melodyPlayable(music.footstep), music.PlaybackMode.UntilDone)
+    pause(250)
+})
