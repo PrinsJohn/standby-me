@@ -8,7 +8,7 @@ namespace SpriteKind {
     export const AnswerWrong = SpriteKind.create()
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.setVolume(190)
+    Sound()
     animation.runImageAnimation(
     Hero,
     [img`
@@ -1739,7 +1739,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.ScaleRedux, function (sprite, ot
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.setVolume(190)
+    Sound()
     animation.runImageAnimation(
     Hero,
     [img`
@@ -2086,6 +2086,12 @@ function RouterQuiz () {
     QuizCursor()
     game.showLongText("Hvor mange % af dit standby forbrug udgør en router?", DialogLayout.Center)
 }
+function Sound () {
+    AllQuizRunning = PcRunning + LampeRunning + MicroOvnRunning + (RouterRunning + TvRunning)
+    if (0 == AllQuizRunning) {
+        music.setVolume(190)
+    }
+}
 function MicroOvnWin () {
     EnergiBrugt += 21.3 * (game.runtime() - StartTid) / 10000
     QstatusMicroOvn = 1
@@ -2195,7 +2201,7 @@ function MicroOvnQuiz () {
     game.showLongText("Hvor mange % af dit standby forbrug udgør en mikrobølgeovn?", DialogLayout.Center)
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.setVolume(190)
+    Sound()
     animation.runImageAnimation(
     Hero,
     [img`
@@ -2349,7 +2355,7 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
         `)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.setVolume(190)
+    Sound()
     animation.runImageAnimation(
     Hero,
     [img`
@@ -4192,6 +4198,7 @@ let ToiletVask: Sprite = null
 let A: Sprite = null
 let AnswerPosIndex = 0
 let Exit: Sprite = null
+let AllQuizRunning = 0
 let ToiletBad: Sprite = null
 let RouterTextDot: Sprite = null
 let Tv: Sprite = null
