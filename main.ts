@@ -2089,7 +2089,7 @@ function RouterQuiz () {
 function Sound () {
     AllQuizRunning = PcRunning + LampeRunning + MicroOvnRunning + (RouterRunning + TvRunning)
     if (0 == AllQuizRunning) {
-        music.setVolume(190)
+        music.setVolume(255)
     }
 }
 function MicroOvnWin () {
