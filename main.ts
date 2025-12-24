@@ -127,8 +127,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.AnswerCorrect, function (sprite,
         QuizRunningFalse()
         if (CompletedTasks < 4) {
             CompletedTasks += 1
-        } else {
-        	
         }
         DestroyForground()
         SpriteForground()
@@ -1370,7 +1368,7 @@ function DestroyForground () {
     sprites.destroy(Lampe)
 }
 function QuizStatus () {
-    game.setDialogTextColor(1)
+    game.setDialogTextColor(2)
     game.setDialogFrame(img`
         c c c c c c c c c c c c c c c 
         c 6 6 6 6 6 6 6 6 6 6 6 6 6 c 
