@@ -1368,7 +1368,7 @@ function DestroyForground () {
     sprites.destroy(Lampe)
 }
 function QuizStatus () {
-    game.setDialogTextColor(2)
+    game.setDialogTextColor(1)
     game.setDialogFrame(img`
         c c c c c c c c c c c c c c c 
         c 6 6 6 6 6 6 6 6 6 6 6 6 6 c 
